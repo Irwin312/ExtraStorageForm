@@ -48,9 +48,4 @@ Forms:
         Icon:
           Type: URL
           Value: https://cdn-icons-png.flaticon.com/128/3135/3135706.png
-      Whitelist:
-        Text: '&aWhitelist'
-        Icon:
-          Type: PATH
-          Value: textures/items/paper.png
 

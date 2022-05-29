@@ -42,7 +42,7 @@ public class MainForm{
         Section buttonSection = section.getSection("Contents");
         for (Object obj : buttonSection.getKeys()){
             String key = String.valueOf(obj);
-            String[] arrayOfButton = new String[]{"Storage", "Filter", "Partner", "Sell", "Whitelist"};
+            String[] arrayOfButton = new String[]{"Storage", "Filter", "Partner", "Sell"};
             if (!Arrays.asList(arrayOfButton).contains(key)){
                 Logger.info(String.format("WARN %s.%s what is this?. Please delete this", buttonSection.getRouteAsString(), key));
                 continue;
