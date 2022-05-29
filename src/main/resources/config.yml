@@ -1,0 +1,56 @@
+#  ╔══════════════════════════╗
+#  ║  Name: ExtraStorageForm  ║
+#  ║    Author: KhanhHuynh    ║
+#  ║    Make with love <3     ║
+#  ╚══════════════════════════╝
+
+### PLEASE DON'T TOUCH THIS VALUE ###
+ConfigVersion: 1
+
+#List of all the aliases of command open storage
+StorageCommands:
+  - exstorage
+  - storage
+  - es
+  - kho
+HelpCommand:
+  - "&e=== &bExtraStorageForm &e==="
+  - "&b/esf help: Show help (Permission: esf.help)"
+  - "&b/esf reload: Reload plugin (Permission: esf.reload)"
+  - "&b/esf open [player]: Open ExtraStorage form for yourself or other players (Permission: esf.open, esf.open.other)"
+
+Messages:
+  NoPermission: "&cYou do not have permission to use this command"
+  OnlyPlayer: "&eCommand only for player"
+
+Forms:
+  MainForm:
+    Title: '&eStorage'
+    Contents:
+      Storage:
+        Text: '&aStorage'
+        Icon:
+          #PATH or URL
+          Type: PATH
+          Value: textures/items/minecart_chest
+      Filter:
+        Text:
+        Icon:
+          Type: PATH
+          Value: textures/items/hopper
+      Partner:
+        Text: '&aPartner'
+        Icon:
+          Type: URL
+          Value: https://cdn-icons-png.flaticon.com/128/2622/2622693.png
+      Sell:
+        Text: '&aSell'
+        Icon:
+          Type: URL
+          Value: https://cdn-icons-png.flaticon.com/128/3135/3135706.png
+      Whitelist:
+        Text: '&aWhitelist'
+        Icon:
+          Type: PATH
+          Value: textures/items/paper.png
+

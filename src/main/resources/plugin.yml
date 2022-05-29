@@ -1,0 +1,9 @@
+name: ExtraStorageForm
+version: '${project.version}'
+main: me.khanh.plugins.extrastorageform.ExtraStorageForm
+api-version: 1.13
+depend:
+  - ExtraStorage
+  - floodgate
+authors: [ KhanhHuynh ]
+description: Plugin create form (UI for Minecraft BE) support ExtraStorage plugin
