@@ -57,9 +57,6 @@ public class MainForm{
         for (Button button : buttons){
             buttonComponents.add(button.build(player));
         }
-        for (ButtonComponent component : buttonComponents){
-            Logger.info(component.getText());
-        }
         return SimpleForm.of(Logger.placeholder(player, title), "", buttonComponents);
     }
 

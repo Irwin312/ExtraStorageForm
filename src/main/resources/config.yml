@@ -34,10 +34,10 @@ Forms:
           Type: PATH
           Value: textures/items/minecart_chest
       Filter:
-        Text:
+        Text: "&aFilter"
         Icon:
-          Type: PATH
-          Value: textures/items/hopper
+          Type: URL
+          Value: https://cdn-icons-png.flaticon.com/512/1836/1836114.png
       Partner:
         Text: '&aPartner'
         Icon:
