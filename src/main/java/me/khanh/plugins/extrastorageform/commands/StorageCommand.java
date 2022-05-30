@@ -4,6 +4,7 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
 import me.khanh.plugins.extrastorageform.ExtraStorageForm;
+import me.khanh.plugins.extrastorageform.Settings;
 import me.khanh.plugins.extrastorageform.utils.Logger;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -20,7 +21,7 @@ public class StorageCommand extends BaseCommand {
     public static void onDefaultCommand(CommandSender sender, CommandHelp help){
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
         if (sender.hasPermission("esf.help")){
-            plugin.getYamlConfig().getStringList("HelpCommand").forEach(s -> sender.sendMessage(Logger.color(s)));
+            plugin.getSettings().HELP_COMMAND.forEach(s -> sender.sendMessage(Logger.color(s)));
         } else {
             sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
         }
@@ -48,11 +49,22 @@ public class StorageCommand extends BaseCommand {
                 if (!(sender instanceof Player)){
                     sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.OnlyPlayer")));
                 } else {
+                    Player player = (Player) sender;
+                    if (!FloodgateApi.getInstance().isFloodgateId(player.getUniqueId())){
+                        sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.OnlyBedrockPlayer")));
+                        return;
+                    }
                     plugin.getManager().getMainForm().open(FloodgateApi.getInstance().getPlayer(((Player) sender).getUniqueId()));
                 }
             }
         } else {
-            ;
+            if (args.length == 1){
+                if (!sender.hasPermission("esf.open.other")){
+                    sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
+                } else {
+
+                }
+            }
         }
     }
 }

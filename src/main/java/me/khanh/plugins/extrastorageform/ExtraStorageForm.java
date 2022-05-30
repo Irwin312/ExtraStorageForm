@@ -11,6 +11,7 @@ import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import lombok.Getter;
 import me.khanh.plugins.extrastorageform.commands.StorageCommand;
 import me.khanh.plugins.extrastorageform.forms.FormManager;
+import me.khanh.plugins.extrastorageform.listeners.PlayerCommandPreprocessListener;
 import me.khanh.plugins.extrastorageform.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,15 +30,20 @@ public final class ExtraStorageForm extends JavaPlugin {
     @Getter
     private FormManager manager;
 
+    @Getter
+    private Settings settings;
+
     @Override
     public void onEnable() {
         long startTime = System.currentTimeMillis();
         try {
             loadConfig();
+            settings = new Settings(this);
             manager = new FormManager(this);
             commandManager = new PaperCommandManager(this);
             commandManager.registerCommand(new StorageCommand());
             commandManager.enableUnstableAPI("help");
+            getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(this), this);
             Logger.info("&bThe plugin has been loaded successfully. Took &a" + (System.currentTimeMillis() - startTime) + "&a ms");
         } catch (IOException exception){
             exception.printStackTrace();
