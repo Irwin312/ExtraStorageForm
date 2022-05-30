@@ -27,7 +27,7 @@ public class ButtonIcon {
                 if (section.getString("Type").equalsIgnoreCase("path")){
                     type = IconType.PATH;
                 } else {
-                    Logger.info(String.format("&eWARN: %s.%s unknown icon type: %s", section.getRouteAsString(), "Type", section.getString("Type")));
+                    Logger.warnConfig(section, "Type", "unknown icon type", null);
                     return;
                 }
             }
@@ -35,11 +35,12 @@ public class ButtonIcon {
             if (section.get("Value") != null){
                 value = section.getString("Value");
             } else {
-                Logger.info(String.format("&eWARN: %s.%s is null", section.getRouteAsString(), "Value"));
+                Logger.warnConfig(section, "Value", "is null", null);
                 return;
             }
         } else {
             Logger.info(String.format("&eWARN: %s.%s is null", section.getRouteAsString(), "Type"));
+            Logger.warnConfig(section, "Type", "is null", null);
             return;
         }
 

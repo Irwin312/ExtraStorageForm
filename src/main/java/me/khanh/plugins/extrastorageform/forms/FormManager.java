@@ -4,14 +4,14 @@ import lombok.Getter;
 import me.khanh.plugins.extrastorageform.ExtraStorageForm;
 
 public class FormManager {
-    private final ExtraStorageForm plugin;
+    protected final ExtraStorageForm plugin;
 
     @Getter
-    private MainForm mainForm;
+    private final MainForm mainForm;
 
     public FormManager(ExtraStorageForm plugin){
         this.plugin = plugin;
-        mainForm = new MainForm(plugin.getYamlConfig().getSection("Forms.MainForm"));
+        mainForm = new MainForm(plugin.getConfigManager().getMainFormConfig().getYamlDocument());
     }
 
 }

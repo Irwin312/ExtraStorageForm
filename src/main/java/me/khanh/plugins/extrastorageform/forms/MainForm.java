@@ -33,7 +33,7 @@ public class MainForm{
         this.section = section;
 
         if (section.get("Title") == null){
-            Logger.info(String.format("WARN: %s.%s is null. Use default value ('')", section.getRouteAsString(), "Title"));
+            Logger.warnConfig(section, "Title", "is null", "''");
             title = "";
         } else {
             title = section.getString("Title");
@@ -44,7 +44,7 @@ public class MainForm{
             String key = String.valueOf(obj);
             String[] arrayOfButton = new String[]{"Storage", "Filter", "Partner", "Sell"};
             if (!Arrays.asList(arrayOfButton).contains(key)){
-                Logger.info(String.format("WARN %s.%s what is this?. Please delete this", buttonSection.getRouteAsString(), key));
+                Logger.warnConfig(section, key, "what is this. Please delete this", null);
                 continue;
             }
             buttons.add(new Button(buttonSection.getSection(key)));

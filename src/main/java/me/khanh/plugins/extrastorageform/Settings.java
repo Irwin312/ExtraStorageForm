@@ -20,7 +20,7 @@ public class Settings {
 
 
     public Settings(ExtraStorageForm plugin){
-        config = plugin.getYamlConfig();
+        config = plugin.getConfigManager().getMainConfig();
         COMMANDS = config.getStringList("StorageCommands");
         HELP_COMMAND = config.getStringList("HelpCommand");
 

@@ -2,15 +2,17 @@ package me.khanh.plugins.extrastorageform.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.CommandHelp;
-import co.aikar.commands.annotation.*;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.HelpCommand;
+import co.aikar.commands.annotation.Subcommand;
 import me.khanh.plugins.extrastorageform.ExtraStorageForm;
-import me.khanh.plugins.extrastorageform.Settings;
 import me.khanh.plugins.extrastorageform.utils.Logger;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.geysermc.floodgate.api.FloodgateApi;
 
-import java.util.Arrays;
 
 @CommandAlias("extrastorageform|esf")
 public class StorageCommand extends BaseCommand {
@@ -23,7 +25,7 @@ public class StorageCommand extends BaseCommand {
         if (sender.hasPermission("esf.help")){
             plugin.getSettings().HELP_COMMAND.forEach(s -> sender.sendMessage(Logger.color(s)));
         } else {
-            sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
+            sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
         }
     }
 
@@ -32,7 +34,7 @@ public class StorageCommand extends BaseCommand {
     public static void onReload(CommandSender sender, String[] args){
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
         if (!sender.hasPermission("esf.reload")){
-            sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
+            sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
         } else {
             ;
         }
@@ -44,14 +46,14 @@ public class StorageCommand extends BaseCommand {
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
         if (args.length == 0){
             if (!sender.hasPermission("esf.open") && !sender.hasPermission("esf.open.other")){
-                sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
+                sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
             } else {
                 if (!(sender instanceof Player)){
-                    sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.OnlyPlayer")));
+                    sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_ONLY_PLAYER));
                 } else {
                     Player player = (Player) sender;
                     if (!FloodgateApi.getInstance().isFloodgateId(player.getUniqueId())){
-                        sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.OnlyBedrockPlayer")));
+                        sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_ONLY_BEDROCK_PLAYER));
                         return;
                     }
                     plugin.getManager().getMainForm().open(FloodgateApi.getInstance().getPlayer(((Player) sender).getUniqueId()));
@@ -60,9 +62,18 @@ public class StorageCommand extends BaseCommand {
         } else {
             if (args.length == 1){
                 if (!sender.hasPermission("esf.open.other")){
-                    sender.sendMessage(Logger.color(plugin.getYamlConfig().getString("Messages.NoPermission")));
+                    sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
                 } else {
-
+                    Player player = Bukkit.getPlayer(args[0]);
+                    if (player == null) {
+                        sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_ONLINE));
+                        return;
+                    }
+                    if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
+                        sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_ONLY_BEDROCK_PLAYER));
+                        return;
+                    }
+                    plugin.getManager().getMainForm().open(FloodgateApi.getInstance().getPlayer(player.getUniqueId()));
                 }
             }
         }

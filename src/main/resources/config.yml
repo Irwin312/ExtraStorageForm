@@ -22,30 +22,8 @@ HelpCommand:
 Messages:
   NoPermission: "&cYou do not have permission to use this command"
   OnlyPlayer: "&eCommand only for player"
-  OnlyFloodgatePlayer: "^eCommand only for floodgate player"
+  OnlyBedrockPlayer: "&eOnly Bedrock Player can use this"
+  NoOnline: "&ePlayer is not online"
+
 
 Forms:
-  MainForm:
-    Title: '&eStorage'
-    Contents:
-      Storage:
-        Text: '&aStorage'
-        Icon:
-          #PATH or URL
-          Type: PATH
-          Value: textures/items/minecart_chest
-      Filter:
-        Text: "&aFilter"
-        Icon:
-          Type: URL
-          Value: https://cdn-icons-png.flaticon.com/512/1836/1836114.png
-      Partner:
-        Text: '&aPartner'
-        Icon:
-          Type: URL
-          Value: https://cdn-icons-png.flaticon.com/128/2622/2622693.png
-      Sell:
-        Text: '&aSell'
-        Icon:
-          Type: URL
-          Value: https://cdn-icons-png.flaticon.com/128/3135/3135706.png

@@ -6,7 +6,6 @@ import me.khanh.plugins.extrastorageform.utils.Logger;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.component.ButtonComponent;
 import org.geysermc.cumulus.util.FormImage;
-import org.geysermc.floodgate.api.player.FloodgatePlayer;
 
 public class Button {
 
@@ -23,7 +22,7 @@ public class Button {
         this.section = section;
 
         if (section.get("Text") == null){
-            Logger.info(String.format("&eWARN: %s.%s is null. Using default value: ''", section.getRouteAsString(), "Text"));
+            Logger.warnConfig(section, "Text", "is null", "''");
             text = "";
         } else {
             text = section.getString("Text");

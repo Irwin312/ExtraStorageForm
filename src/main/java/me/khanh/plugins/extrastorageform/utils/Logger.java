@@ -1,9 +1,14 @@
 package me.khanh.plugins.extrastorageform.utils;
 
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class Logger {
     private static final String VERSION = Bukkit.getBukkitVersion();
@@ -14,11 +19,20 @@ public class Logger {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 
-    public static void info(String s){
+    public static void info(String s) {
         Bukkit.getConsoleSender().sendMessage(color("&f[&b" + PREFIX + "&f] &r" + s));
     }
 
-    public static String placeholder(Player player, String s){
+    public static String placeholder(Player player, String s) {
         return PlaceholderAPI.setPlaceholders(player, color(s));
+    }
+
+    public static void warnConfig(@NotNull Section section, @NotNull String key, @NotNull String reason, @Nullable String defaultValue) {
+        String fileName = Objects.requireNonNull(section.getRoot().getFile()).getName();
+        if (defaultValue == null) {
+            info(String.format("&eWARN: &6%s &e>> &c%s.%s %s", fileName, section.getRouteAsString(), key, reason));
+        } else {
+            info(String.format("&eWARN: &6%s &e>> &c%s.%s %s. &dUsing default value: %s", fileName, section.getRouteAsString(), key, reason, defaultValue));
+        }
     }
 }
