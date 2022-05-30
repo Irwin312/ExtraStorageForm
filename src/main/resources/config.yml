@@ -22,6 +22,7 @@ HelpCommand:
 Messages:
   NoPermission: "&cYou do not have permission to use this command"
   OnlyPlayer: "&eCommand only for player"
+  OnlyFloodgatePlayer: "^eCommand only for floodgate player"
 
 Forms:
   MainForm:
@@ -48,4 +49,3 @@ Forms:
         Icon:
           Type: URL
           Value: https://cdn-icons-png.flaticon.com/128/3135/3135706.png
-
