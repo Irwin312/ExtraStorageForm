@@ -6,12 +6,15 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.HelpCommand;
 import co.aikar.commands.annotation.Subcommand;
+import com.hyronic.exstorage.api.StorageAPI;
 import me.khanh.plugins.extrastorageform.ExtraStorageForm;
 import me.khanh.plugins.extrastorageform.utils.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.geysermc.floodgate.api.FloodgateApi;
+
+import java.util.UUID;
 
 
 @CommandAlias("extrastorageform|esf")
@@ -20,7 +23,7 @@ public class StorageCommand extends BaseCommand {
     @Default
     @HelpCommand
     @SuppressWarnings("unused")
-    public static void onDefaultCommand(CommandSender sender, CommandHelp help){
+    public static void onDefaultCommand(CommandSender sender, CommandHelp help) {
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
         if (sender.hasPermission("esf.help")){
             plugin.getSettings().HELP_COMMAND.forEach(s -> sender.sendMessage(Logger.color(s)));
@@ -31,24 +34,31 @@ public class StorageCommand extends BaseCommand {
 
     @Subcommand("reload")
     @SuppressWarnings("unused")
-    public static void onReload(CommandSender sender, String[] args){
+    public static void onReload(CommandSender sender, String[] args) {
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
-        if (!sender.hasPermission("esf.reload")){
+        if (!sender.hasPermission("esf.reload")) {
             sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
         } else {
             ;
         }
     }
 
+    @Subcommand("test")
+    @SuppressWarnings("unused")
+    public static void onTest(Player player, String[] args) {
+        UUID uuid = player.getUniqueId();
+        StorageAPI.getInstance().getUser(uuid).getStorage().getMaterials().forEach((s, integer) -> Logger.info(s + ":" + integer));
+    }
+
     @Subcommand("open")
     @SuppressWarnings("unused")
-    public static void onOpen(CommandSender sender, String[] args){
+    public static void onOpen(CommandSender sender, String[] args) {
         ExtraStorageForm plugin = ExtraStorageForm.getPlugin(ExtraStorageForm.class);
-        if (args.length == 0){
-            if (!sender.hasPermission("esf.open") && !sender.hasPermission("esf.open.other")){
+        if (args.length == 0) {
+            if (!sender.hasPermission("esf.open") && !sender.hasPermission("esf.open.other")) {
                 sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_NO_PERMISSION));
             } else {
-                if (!(sender instanceof Player)){
+                if (!(sender instanceof Player)) {
                     sender.sendMessage(Logger.color(plugin.getSettings().MESSAGE_ONLY_PLAYER));
                 } else {
                     Player player = (Player) sender;

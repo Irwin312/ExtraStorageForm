@@ -142,5 +142,12 @@
             <artifactId>acf-paper</artifactId>
             <version>0.5.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.hyronic.exstorage</groupId>
+            <artifactId>ExtraStorage</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/ExtraStorage (1.14+).jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
