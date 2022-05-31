@@ -8,10 +8,13 @@ public class FormManager {
 
     @Getter
     private final MainForm mainForm;
+    @Getter
+    final StorageForm storageForm;
 
     public FormManager(ExtraStorageForm plugin){
         this.plugin = plugin;
         mainForm = new MainForm(plugin.getConfigManager().getMainFormConfig().getYamlDocument());
+        storageForm = new StorageForm(plugin.getConfigManager().getStorageFormConfig().getYamlDocument());
     }
 
 }

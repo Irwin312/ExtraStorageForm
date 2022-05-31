@@ -1,9 +1,15 @@
 package me.khanh.plugins.extrastorageform.forms;
 
 import dev.dejvokep.boostedyaml.block.implementation.Section;
+import lombok.Getter;
 
 public class StorageForm {
-    public StorageForm(Section section){
+
+    @Getter
+    private Section section;
+
+    public StorageForm(Section section) {
+        this.section = section;
 
     }
 }

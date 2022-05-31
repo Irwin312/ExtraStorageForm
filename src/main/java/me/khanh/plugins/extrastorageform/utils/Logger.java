@@ -29,10 +29,18 @@ public class Logger {
 
     public static void warnConfig(@NotNull Section section, @NotNull String key, @NotNull String reason, @Nullable String defaultValue) {
         String fileName = Objects.requireNonNull(section.getRoot().getFile()).getName();
-        if (defaultValue == null) {
-            info(String.format("&eWARN: &6%s &e>> &c%s.%s %s", fileName, section.getRouteAsString(), key, reason));
+        if (section.getRouteAsString() == null) {
+            if (defaultValue == null) {
+                info(String.format("&eWARN: &6%s &e>> &c%s %s", fileName, key, reason));
+            } else {
+                info(String.format("&eWARN: &6%s &e>> &c%s %s. &dUsing default value: %s", fileName, key, reason, defaultValue));
+            }
         } else {
-            info(String.format("&eWARN: &6%s &e>> &c%s.%s %s. &dUsing default value: %s", fileName, section.getRouteAsString(), key, reason, defaultValue));
+            if (defaultValue == null) {
+                info(String.format("&eWARN: &6%s &e>> &c%s.%s %s", fileName, section.getRouteAsString(), key, reason));
+            } else {
+                info(String.format("&eWARN: &6%s &e>> &c%s.%s %s. &dUsing default value: %s", fileName, section.getRouteAsString(), key, reason, defaultValue));
+            }
         }
     }
 }

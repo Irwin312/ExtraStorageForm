@@ -9,6 +9,7 @@ import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import lombok.Getter;
 import me.khanh.plugins.extrastorageform.ExtraStorageForm;
 import me.khanh.plugins.extrastorageform.config.forms.MainFormConfig;
+import me.khanh.plugins.extrastorageform.config.forms.StorageFormConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class ConfigManager {
 
     @Getter
     private final MainFormConfig mainFormConfig;
+    @Getter
+    private final StorageFormConfig storageFormConfig;
 
 
     public ConfigManager(ExtraStorageForm plugin) throws IOException {
@@ -46,6 +49,8 @@ public class ConfigManager {
         }
 
         mainFormConfig = new MainFormConfig(this);
+
+        storageFormConfig = new StorageFormConfig(this);
 
     }
 }

@@ -48,6 +48,23 @@
                                         <exclude>META-INF/*.MF</exclude>
                                     </excludes>
                                 </filter>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.MF</exclude>
+                                        <exclude>com/cryptomorin/xseries/messages/*</exclude>
+                                        <exclude>com/cryptomorin/xseries/particles/*</exclude>
+                                        <exclude>com/cryptomorin/xseries/SkullUtils.class</exclude>
+                                        <exclude>com/cryptomorin/xseries/N*</exclude>
+                                        <exclude>com/cryptomorin/xseries/R*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XB*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XE*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XI*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XP*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XS*</exclude>
+                                        <exclude>com/cryptomorin/xseries/XT*</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                             <relocations>
                                 <relocation>
@@ -64,11 +81,17 @@
                                 </relocation>
                                 <relocation>
                                     <pattern>co.aikar.commands</pattern>
-                                    <shadedPattern>me.khanh.plugins.extrastorageform.libs.acf</shadedPattern> <!-- Replace this -->
+                                    <shadedPattern>me.khanh.plugins.extrastorageform.libs.acf
+                                    </shadedPattern> <!-- Replace this -->
                                 </relocation>
                                 <relocation>
                                     <pattern>co.aikar.locales</pattern>
-                                    <shadedPattern>me.khanh.plugins.extrastorageform.libs.acf.locales</shadedPattern> <!-- Replace this -->
+                                    <shadedPattern>me.khanh.plugins.extrastorageform.libs.acf.locales
+                                    </shadedPattern> <!-- Replace this -->
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.cryptomorin</pattern>
+                                    <shadedPattern>me.khanh.plugins.extrastorageform.libs</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -148,6 +171,11 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/ExtraStorage (1.14+).jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>8.7.1</version>
         </dependency>
     </dependencies>
 </project>

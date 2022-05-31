@@ -1,23 +1,13 @@
 Title: "&2&lExStorage | &0Storage"
 Text:
-  - '&7+ This is where you can withdraw or add items to your storage.'
-  - ''
-  - '&c&l* Note: &cYour partners can do the same things in this area.'
-
+  - '&7This is where you can withdraw or add items to your storage.'
+  - '&c&lNote: &cYour partners can do the same things in this area.'
+  - 'Space: %used%/%limit%'
 Sorting:
+  Enable: true
   #NAME, QUANTITY, UNUSED
   DefaultType: QUANTITY
   Text: "&7Sorting: %type%"
 
-Format:
-  COBBLESTONE:
-    Name: "&7Cobblestone"
-    Icon:
-      Type: Path
-      Value: textures/blocks/cobblestone
-  GOLD_ORE:
-    Name: "&6GOLD ORE"
-    Icon:
-      Type: Path
-      Value: textures/blocks/gold_ore
-
+#%material%, %material_formatted%, %amount%
+ButtonText: "%material_formatted%: %amount%"

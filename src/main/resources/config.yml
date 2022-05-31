@@ -24,3 +24,79 @@ Messages:
   OnlyPlayer: "&eCommand only for player"
   OnlyBedrockPlayer: "&eOnly Bedrock Player can use this"
   NoOnline: "&ePlayer is not online"
+
+Format:
+  STONE:
+    Name: "&7Stone"
+    Icon:
+      Type: Path
+      Value: textures/blocks/cobblestone
+  COBBLESTONE:
+    Name: "&7Cobblestone"
+    Icon:
+      Type: Path
+      Value: textures/blocks/cobblestone
+  COAL_BLOCK:
+    Name: "&8Coal Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/coal_block
+  LAPIS_BLOCK:
+    Name: "&9Lapis Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/lapis_block
+  REDSTONE_BLOCK:
+    Name: "&cRedstone Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/redstone_block
+  GOLD_BLOCK:
+    Name: "&eGold Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/gold_block
+  DIAMOND_BLOCK:
+    Name: "&bDiamond Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/diamond_block
+  EMERALD_BLOCK:
+    Name: "&aEmerald Block"
+    Icon:
+      Type: Path
+      Value: textures/blocks/emerald_block
+  COAL:
+    Name: "&8Coal"
+    Icon:
+      Type: Path
+      Value: textures/items/coal
+  LAPIS_LAZULI:
+    Name: "&8Coal"
+    Icon:
+      Type: Path
+      Value: textures/items/coal
+  REDSTONE:
+    Name: "&cRedstone"
+    Icon:
+      Type: Path
+      Value: textures/items/redstone_dust
+  IRON_ORE:
+    Name: "&fIron Ore"
+    Icon: Path
+    Value: textures/blocks/iron_ore
+  GOLD_ORE:
+    Name: "&6GOLD ORE"
+    Icon:
+      Type: Path
+      Value: textures/blocks/gold_ore
+  DIAMOND:
+    Name: "&bDiamond"
+    Icon:
+      Type: Path
+      Value: textures/items/diamond
+  EMERALD:
+    Name: "&Emerald"
+    Icon:
+      Type: Path
+      Value: textures/items/emerald
