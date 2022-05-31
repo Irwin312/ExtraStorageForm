@@ -3,7 +3,7 @@ Text:
   - '&7This is where you can withdraw or add items to your storage.'
   - '&c&lNote: &cYour partners can do the same things in this area.'
   - 'Space: %used%/%limit%'
-Sorting:
+Sort:
   Enable: true
   #NAME, QUANTITY, UNUSED
   DefaultType: QUANTITY

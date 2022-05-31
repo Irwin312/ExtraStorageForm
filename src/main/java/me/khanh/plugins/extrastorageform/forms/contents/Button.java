@@ -4,7 +4,7 @@ import dev.dejvokep.boostedyaml.block.implementation.Section;
 import lombok.Getter;
 import me.khanh.plugins.extrastorageform.utils.Logger;
 import org.bukkit.entity.Player;
-import org.geysermc.cumulus.component.ButtonComponent;
+import org.geysermc.cumulus.SimpleForm;
 import org.geysermc.cumulus.util.FormImage;
 
 public class Button {
@@ -36,14 +36,14 @@ public class Button {
         }
     }
 
-    public ButtonComponent build(Player player){
-        if (icon == null){
-            return ButtonComponent.of(Logger.placeholder(player, text));
+    public void build(SimpleForm.Builder builder, Player player) {
+        if (icon == null) {
+            builder.button(Logger.placeholder(player, text));
         } else {
-            if (icon.getType().equals(ButtonIcon.IconType.URL)){
-                return ButtonComponent.of(Logger.placeholder(player, text), FormImage.Type.URL, Logger.placeholder(player, icon.getValue()));
+            if (icon.getType().equals(ButtonIcon.IconType.URL)) {
+                builder.button(Logger.placeholder(player, text), FormImage.Type.URL, Logger.placeholder(player, icon.getValue()));
             } else {
-                return ButtonComponent.of(Logger.placeholder(player, text), FormImage.Type.PATH, Logger.placeholder(player, icon.getValue()));
+                builder.button(Logger.placeholder(player, text), FormImage.Type.PATH, Logger.placeholder(player, icon.getValue()));
             }
         }
     }

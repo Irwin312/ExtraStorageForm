@@ -14,6 +14,9 @@ public class StorageFormConfig {
     private final YamlDocument yamlDocument;
     protected ConfigManager manager;
 
+    @Getter
+    private final boolean SORT_ENABLE;
+
     public StorageFormConfig(ConfigManager manager) throws IOException {
         this.manager = manager;
         Path formPath = Paths.get(manager.getFormsDir().toString(), "StorageForm.yml");
@@ -21,5 +24,9 @@ public class StorageFormConfig {
             manager.plugin.saveResource("forms/StorageForm.yml", false);
         }
         yamlDocument = YamlDocument.create(formPath.toFile());
+
+        SORT_ENABLE = yamlDocument.getBoolean("Sort.Enable");
+
+//        Bukkit.getPlayer("a").open
     }
 }
