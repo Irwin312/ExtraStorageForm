@@ -89,7 +89,6 @@ public class MainForm {
     }
 
     public void open(FloodgatePlayer player){
-        Player bukkitPlayer = Bukkit.getPlayer(player.getJavaUsername());
         player.sendForm(buildForm(player));
     }
 

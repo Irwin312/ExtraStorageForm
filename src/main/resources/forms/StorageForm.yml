@@ -5,7 +5,7 @@ Text:
   - 'Space: %used%/%limit%'
 Sort:
   Enable: true
-  #NAME, QUANTITY, UNUSED
+  #NONE, NAME, QUANTITY, UNUSED
   DefaultType: QUANTITY
   Text: "&7Sorting: %type%"
 
